@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Home Page</title>
+</head>
+<body>
+<main class="container">
+    <h2 th:if="${username != null}" th:text="${'Current user: ' + username}"></h2>
+    <h1>Welcome!</h1>
+    <a th:if="!${username}" href="/login">Log In</a> <br>
+    <a th:if="!${username}" href="/signup">Sign Up</a>
+    <a th:if="${username}" href="/logout">Log Out</a>
+</main>
+</body>
+</html>

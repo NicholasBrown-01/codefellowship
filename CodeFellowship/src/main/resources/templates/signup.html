@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>SignUp</title>
+</head>
+<body>
+<main class="container">
+
+    <h1>Sign Up!</h1>
+    <form action="/signup" method="POST">
+        <br>
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName">
+        <br>
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName">
+        <br>
+        <label for="dateOfBirth">Date of Birth</label>
+        <input type="date" name="dateOfBirth" id="dateOfBirth">
+        <br>
+        <label for="bio">Additional Info</label>
+        <input type="text" name="bio" id="bio">
+        <br>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <br>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+
+        <input type="submit" value="Sign Up">
+    </form>
+</main>
+
+
+</body>
+</html>
