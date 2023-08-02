@@ -8,22 +8,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <title>My Profile</title>
 </head>
-<h1> This is my Profile</h1>
-<nav style="border: 2px solid white;">
-    <h3> Link to User ID Page</h3>
-    <h3><a href="/">Link to Home Page</a></h3>
-</nav>
 <body>
 <main class="container">
+<nav>
+    <h3>
+        <a href="/users" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">View All Users</a>
+    </h3>
+    <h3>
+        <a href="/" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">Home</a>
+    </h3>
+</nav>
     <h1>User Profile</h1>
     <br>
-    <h3>Make a post:</h3>
-
-    <form action="/myprofile" method="POST">
-        <label for="userPost" id="post">What's on your mind?</label>
-        <input type="text" name="userPost" id="userPost">
-        <input type="submit" value="Submit Post">
-    </form>
 
     <img th:src="${applicationUser.imageURL}" alt="User image"
          style="width: 250px; height: 250px; object-fit: cover; border: 2px solid white;">
@@ -40,6 +36,13 @@
             </div>
         </li>
     </ul>
+    <h3>Make a post:</h3>
+
+    <form action="/myprofile" method="POST">
+        <label for="userPost" id="post">What's on your mind?</label>
+        <input type="text" name="userPost" id="userPost">
+        <input type="submit" value="Submit Post">
+    </form>
 </main>
 </body>
 </html>

@@ -31,4 +31,4 @@
 - Added ability for user to see profile information
 - Added ability for user to make posts
 
-- Not Complete:User to view other User Profiles
+- Added User to view other User Profiles

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Controller
@@ -38,10 +39,6 @@ public class ApplicationUserController {
         return "login";
     }
 
-    @GetMapping("/signup")
-    public String getSignUpPage() {
-        return "signup";
-    }
 
     @GetMapping("/myprofile")
     public String getmyProfilePage(Model m, Principal p) {
@@ -71,6 +68,10 @@ public class ApplicationUserController {
         return new RedirectView("/myprofile");
     }
 
+    @GetMapping("/signup")
+    public String getSignUpPage() {
+        return "signup";
+    }
 
     @PostMapping("/signup")
     public RedirectView postSignUpData(String firstName, String lastName, LocalDate dateOfBirth, String bio, String username, String password) {
@@ -99,6 +100,15 @@ public class ApplicationUserController {
             e.printStackTrace();
         }
     }
+
+    @GetMapping("/users")
+    public String getAllUsersPage(Model m) {
+        List<ApplicationUser> users = applicationUserRepository.findAll();
+        m.addAttribute("usersArray", users);
+        return "users";
+    }
+
+
     @GetMapping("/")
     public String getHomePage(Model m, Principal p) {
 

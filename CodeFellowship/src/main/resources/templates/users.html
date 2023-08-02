@@ -1,14 +1,34 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <title>User View Page</title>
 </head>
-<h1>See User Profiles Here</h1>
+<h1 th:if="${username != null}" th:text="'Logged in as ' + ${username}"></h1>
+
+
 <body>
+<main class="container">
+<nav>
+    <h3>
+        <a href="/myprofile" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">Your Profile</a>
+    </h3>
+    <h3>
+        <a href="/" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">Home</a>
+    </h3>
+</nav>
+    <h1>Current Users</h1>
+<div th:each="user : ${usersArray}" style="border: 2px solid white; padding: 10px; margin-bottom: 10px;">
+    <p><strong>First Name:</strong> <span th:text="${user.firstName}"></span></p>
+    <p><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></p>
+    <p><strong>Bio:</strong> <span th:text="${user.bio}"></span></p>
+</div>
+</main>
+</body>
 
 </body>
 </html>

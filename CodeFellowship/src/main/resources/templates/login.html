@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -9,13 +9,13 @@
     <title>Login</title>
 </head>
 
+<h1 th:if="${username != null}" th:text="'Welcome ' + ${username}"></h1>
 
     <h1> Login Page:</h1>
     <body>
     <main class="container">
 
         <h1>Login</h1>
-        <h2>(or sign up <a href="/signup">here</a>)</h2>
 
         <form action="/login" method="POST">
 
@@ -27,6 +27,7 @@
 
             <input type="submit" value="Log in">
         </form>
+        <h2>(or sign up <a href="/signup">here</a>)</h2>
     </main>
 
 
