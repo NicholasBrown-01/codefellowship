@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>My Profile</title>
+</head>
+<h1> This is my Profile</h1>
+<nav style="border: 2px solid white;">
+    <h3> Link to User ID Page</h3>
+    <h3><a href="/">Link to Home Page</a></h3>
+</nav>
+<body>
+<main class="container">
+    <h1>User Profile</h1>
+    <br>
+    <h3>Make a post:</h3>
+
+    <form action="/myprofile" method="POST">
+        <label for="userPost" id="post">What's on your mind?</label>
+        <input type="text" name="userPost" id="userPost">
+        <input type="submit" value="Submit Post">
+    </form>
+
+    <img th:src="${applicationUser.imageURL}" alt="User image"
+         style="width: 250px; height: 250px; object-fit: cover; border: 2px solid white;">
+    <p>Username: <span th:text="${applicationUser.username}"></span></p>
+    <p>First Name: <span th:text="${applicationUser.firstName}"></span></p>
+    <p>Last Name: <span th:text="${applicationUser.lastName}"></span></p>
+    <p>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></p>
+    <p>Bio: <span th:text="${applicationUser.bio}"></span></p>
+    <ul>
+        <li th:each="userPost : ${applicationUser.postArray}" th:text="'Post: ' + ${userPost.post}"></li>
+    </ul>
+</main>
+</body>
+</html>

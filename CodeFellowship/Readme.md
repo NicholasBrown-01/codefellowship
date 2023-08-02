@@ -21,3 +21,14 @@
 - The site should be well-styled and attractive.
 - The site should use templates to display its information.
 - Ensure that user registration also logs users into your app automatically.
+
+
+## Lab 17: CodeFellowship Posts with Login
+
+### Feature Tasks:
+
+- Added myprofile page
+- Added ability for user to see profile information
+- Added ability for user to make posts
+
+- Not Complete:User to view other User Profiles
