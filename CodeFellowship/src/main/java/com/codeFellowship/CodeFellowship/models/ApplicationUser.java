@@ -1,14 +1,12 @@
 package com.codeFellowship.CodeFellowship.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -21,11 +19,16 @@ public class ApplicationUser implements UserDetails {
     String lastName;
     LocalDate dateOfBirth;
     String bio;
+    String imageURL;
+
+    @OneToMany(mappedBy = "applicationUser", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    List<ApplicationUserPost> postArray;
 
     public ApplicationUser() {
     }
 
-    public ApplicationUser(String username, String password, String firstName, String lastName, LocalDate dateOfBirth, String bio) {
+    public ApplicationUser(String imageURL, String username, String password, String firstName, String lastName, LocalDate dateOfBirth, String bio) {
+        this.imageURL = imageURL;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -62,7 +65,7 @@ public class ApplicationUser implements UserDetails {
         return true;
     }
 
-    @Override
+        @Override
     public boolean isEnabled() {
         return true;
     }
@@ -116,6 +119,22 @@ public class ApplicationUser implements UserDetails {
         this.bio = bio;
     }
 
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public List<ApplicationUserPost> getPostArray() {
+        return postArray;
+    }
+
+    public void setPostArray(List<ApplicationUserPost> postArray) {
+        this.postArray = postArray;
+    }
+
     @Override
     public String toString() {
         return "ApplicationUser{" +
@@ -126,6 +145,8 @@ public class ApplicationUser implements UserDetails {
                 ", lastName='" + lastName + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", bio='" + bio + '\'' +
+                ", imageURL='" + imageURL + '\'' +
+                ", postArray=" + postArray +
                 '}';
     }
 }

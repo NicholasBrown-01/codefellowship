@@ -10,11 +10,12 @@
 </head>
 <body>
 <main class="container">
-    <h2 th:if="${username != null}" th:text="${'Current user: ' + username}"></h2>
     <h1>Welcome!</h1>
-    <a th:if="!${username}" href="/login">Log In</a> <br>
-    <a th:if="!${username}" href="/signup">Sign Up</a>
-    <a th:if="${username}" href="/logout">Log Out</a>
+    <h2 th:if="${username != null}" th:text="${'Current user: ' + username}"></h2>
+    <nav><h3 th:if="${username != null}"><a href="myprofile">Back to Profile</a></h3></nav>
+    <button th:if="!${username}" onclick="location.href='/login'">Log In</button> <br>
+    <button th:if="!${username}" onclick="location.href='/signup'">Sign Up</button>
+    <button th:if="${username}" onclick="location.href='/logout'">Log Out</button>
 </main>
 </body>
 </html>
