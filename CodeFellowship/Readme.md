@@ -33,3 +33,4 @@
 
 - Added User to view other User Profiles
 - Added constant Thymeleaf component
+- Added Default User Image to each user in Users page
