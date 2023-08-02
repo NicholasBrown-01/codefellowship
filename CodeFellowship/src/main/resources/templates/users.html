@@ -26,6 +26,13 @@
     <p><strong>First Name:</strong> <span th:text="${user.firstName}"></span></p>
     <p><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></p>
     <p><strong>Bio:</strong> <span th:text="${user.bio}"></span></p>
+
+    <p><strong>User Posts:</strong></p>
+    <div th:each="post : ${user.postArray}" style="border: 2px solid green; padding: 10px; margin-bottom: 10px;">
+        <p th:text="${post.post}"></p>
+        <p><strong>Posted on:</strong> <span th:text="${post.time}"></span></p>
+    </div>
+
 </div>
 </main>
 </body>
