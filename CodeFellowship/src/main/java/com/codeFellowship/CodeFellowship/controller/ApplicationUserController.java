@@ -37,10 +37,12 @@ public class ApplicationUserController {
     public String getLoginPage() {
         return "login";
     }
+
     @GetMapping("/signup")
     public String getSignUpPage() {
         return "signup";
     }
+
     @GetMapping("/myprofile")
     public String getmyProfilePage(Model m, Principal p) {
 
