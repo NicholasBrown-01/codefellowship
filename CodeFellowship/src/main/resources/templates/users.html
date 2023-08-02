@@ -22,18 +22,18 @@
     </h3>
 </nav>
     <h1>Current Users</h1>
-<div th:each="user : ${usersArray}" style="border: 2px solid white; padding: 10px; margin-bottom: 10px;">
-    <p><strong>First Name:</strong> <span th:text="${user.firstName}"></span></p>
-    <p><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></p>
-    <p><strong>Bio:</strong> <span th:text="${user.bio}"></span></p>
+    <div th:each="user : ${usersArray}" style="border: 2px solid white; padding: 10px; margin-bottom: 10px;">
+        <img th:src="${user.imageURL != null && !user.imageURL.isEmpty() ? user.imageURL : 'https://images.unsplash.com/photo-1599508704512-2f19efd1e35f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cXVlc3Rpb24lMjBtYXJrfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60'}" alt="User image" style="width: 250px; height: 250px; object-fit: cover; border: 2px solid white;"> //Chat GPT
+        <p><strong>First Name:</strong> <span th:text="${user.firstName}"></span></p>
+        <p><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></p>
+        <p><strong>Bio:</strong> <span th:text="${user.bio}"></span></p>
 
-    <p><strong>User Posts:</strong></p>
-    <div th:each="post : ${user.postArray}" style="border: 2px solid green; padding: 10px; margin-bottom: 10px;">
-        <p th:text="${post.post}"></p>
-        <p><strong>Posted on:</strong> <span th:text="${post.time}"></span></p>
+        <p><strong>User Posts:</strong></p>
+        <div th:each="post : ${user.postArray}" style="border: 2px solid green; padding: 10px; margin-bottom: 10px;">
+            <p th:text="${post.post}"></p>
+            <p><strong>Posted on:</strong> <span th:text="${post.time}"></span></p>
+        </div>
     </div>
-
-</div>
 </main>
 </body>
 
