@@ -32,3 +32,4 @@
 - Added ability for user to make posts
 
 - Added User to view other User Profiles
+- Added constant Thymeleaf component

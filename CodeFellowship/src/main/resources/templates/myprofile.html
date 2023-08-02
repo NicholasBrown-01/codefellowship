@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <title>My Profile</title>
 </head>
+<h3 th:if="${username != null}" th:text="'Logged in as: ' + ${username}"></h3>
+
 <body>
 <main class="container">
 <nav>

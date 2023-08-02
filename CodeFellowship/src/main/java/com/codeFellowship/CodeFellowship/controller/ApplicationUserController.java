@@ -51,7 +51,9 @@ public class ApplicationUserController {
 
             String imageURL = "https://images.unsplash.com/photo-1599508704512-2f19efd1e35f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cXVlc3Rpb24lMjBtYXJrfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60";
             applicationUser.setImageURL(imageURL);
+
             m.addAttribute("applicationUser", applicationUser);
+            m.addAttribute("username", username);
 
         }
             return "/myprofile";
@@ -102,9 +104,16 @@ public class ApplicationUserController {
     }
 
     @GetMapping("/users")
-    public String getAllUsersPage(Model m) {
+    public String getAllUsersPage(Model m, Principal p) {
         List<ApplicationUser> users = applicationUserRepository.findAll();
         m.addAttribute("usersArray", users);
+
+        if (p != null) {
+            String username = p.getName();
+            ApplicationUser applicationUser = applicationUserRepository.findByUsername(username);
+
+            m.addAttribute("username", username);
+        }
         return "users";
     }
 
