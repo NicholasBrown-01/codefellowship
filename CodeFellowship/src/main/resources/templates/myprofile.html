@@ -33,7 +33,12 @@
     <p>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></p>
     <p>Bio: <span th:text="${applicationUser.bio}"></span></p>
     <ul>
-        <li th:each="userPost : ${applicationUser.postArray}" th:text="'Post: ' + ${userPost.post}"></li>
+        <li th:each="userPost : ${applicationUser.postArray}">
+            <div style="border: 2px solid white; padding: 10px;">
+                <p th:text="${userPost.time}"></p>
+                <p th:text="'Post: ' + ${userPost.post}"></p>
+            </div>
+        </li>
     </ul>
 </main>
 </body>
