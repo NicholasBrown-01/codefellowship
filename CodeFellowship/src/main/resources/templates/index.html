@@ -5,28 +5,27 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <title>Home Page</title>
 </head>
 <body>
-<main class="container">
+<header>
     <h1 th:if="${username != null}" th:text="'Welcome ' + ${username}"></h1>
-
-    <nav>
-        <h3 th:if="${username != null}">
-            <a href="myprofile" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">Your Profile</a>
-        </h3>
-    </nav>
-    <nav>
-        <h3 th:if="${username != null}">
-            <a href="users" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">View Users</a>
-        </h3>
-    </nav>
-
+</header>
+<main class="container">
+    <div class="navigation-links">
+        <h2 th:if="${username != null}">
+            <a href="myprofile" class="nav-link">Your Profile</a>
+        </h2>
+        <h2 th:if="${username != null}">
+            <a href="users" class="nav-link">View Users</a>
+        </h2>
+    </div>
     <button th:if="!${username}" onclick="location.href='/login'">Log In</button> <br>
     <button th:if="!${username}" onclick="location.href='/signup'">Sign Up</button>
     <button th:if="${username}" onclick="location.href='/logout'">Log Out</button>
-
 </main>
+<footer>
+</footer>
 </body>
 </html>

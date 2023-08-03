@@ -45,3 +45,4 @@
 - Added feed page that you can see the posts of users with follow with link to their profile page
 
 **Had to have help from GPT to understand tracking posting especially when integrating with the feed page
+**Randomly Worked with GPT to do some CSS. Didn't finish but learned some things.

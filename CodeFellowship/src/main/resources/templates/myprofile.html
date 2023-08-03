@@ -5,65 +5,62 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <title>My Profile</title>
 </head>
-<h3 th:if="${username != null}" th:text="'Logged in as: ' + ${username}"></h3>
-
 <body>
-<main class="container">
+<header>
+    <h3 th:if="${username != null}" th:text="'Logged in as: ' + ${username}"></h3>
+</header>
+<div class="navigation-links">
     <nav>
-        <h3>
-            <a href="/users" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">View All Users</a>
-        </h3>
-        <h3>
-            <a href="/feed" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">Your Feed</a>
-        </h3>
-        <h3>
-            <a href="/" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">Home</a>
-        </h3>
+        <h3><a href="/users" class="nav-link">View All Users</a></h3>
+        <h3><a href="/feed" class="nav-link">Your Feed</a></h3>
+        <h3><a href="/" class="nav-link">Home</a></h3>
     </nav>
-    <h1>Your Profile</h1>
-
-    <img th:src="${applicationUser.imageURL}" alt="User image"
-         style="width: 250px; height: 250px; object-fit: cover; border: 2px solid white;">
-    <br>
-    <br>
-    <p>Username: <span th:text="${applicationUser.username}"></span></p>
-    <p>First Name: <span th:text="${applicationUser.firstName}"></span></p>
-    <p>Last Name: <span th:text="${applicationUser.lastName}"></span></p>
-    <p>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></p>
-    <p>Bio: <span th:text="${applicationUser.bio}"></span></p>
-
-    <h2>Users You Follow:</h2>
-    <ul>
-        <li th:each="user : ${applicationUser.usersIFollow}">
-            <p th:text="'Name: ' + ${user.firstName} + ' ' + ${user.lastName}"></p>
-        </li>
-    </ul>
-
-    <h2>Users Who Follow You:</h2>
-    <ul>
-        <li th:each="user : ${applicationUser.usersWhoFollowMe}">
-            <p th:text="'Name: ' + ${user.firstName} + ' ' + ${user.lastName}"></p>
-        </li>
-    </ul>
-
-    <ul>
-        <li th:each="userPost : ${applicationUser.postArray}">
-            <div style="border: 2px solid white; padding: 10px;">
-                <p th:text="${userPost.time}"></p>
-                <p th:text="'Post: ' + ${userPost.post}"></p>
-            </div>
-        </li>
-    </ul>
-    <h3>Make a post:</h3>
-
-    <form action="/myprofile" method="POST">
-        <label for="userPost" id="post">What's on your mind?</label>
-        <input type="text" name="userPost" id="userPost">
-        <input type="submit" value="Submit Post">
-    </form>
+</div>
+<main class="container">
+    <div class="profile-form">
+        <h1>Your Profile</h1>
+        <div class="user-details">
+            <img th:src="${applicationUser.imageURL}" alt="User image" class="user-image">
+            <p>Username: <span th:text="${applicationUser.username}"></span></p>
+            <p>First Name: <span th:text="${applicationUser.firstName}"></span></p>
+            <p>Last Name: <span th:text="${applicationUser.lastName}"></span></p>
+            <p>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></p>
+            <p>Bio: <span th:text="${applicationUser.bio}"></span></p>
+        </div>
+        <div class="followed-users">
+            <h2>Users You Follow:</h2>
+            <ul th:each="user : ${applicationUser.usersIFollow}">
+                <li><p th:text="'Name: ' + ${user.firstName} + ' ' + ${user.lastName}"></p></li>
+            </ul>
+        </div>
+        <div class="followers">
+            <h2>Users Who Follow You:</h2>
+            <ul th:each="user : ${applicationUser.usersWhoFollowMe}">
+                <li><p th:text="'Name: ' + ${user.firstName} + ' ' + ${user.lastName}"></p></li>
+            </ul>
+        </div>
+        <div class="user-posts">
+            <ul th:each="userPost : ${applicationUser.postArray}">
+                <li>
+                    <div class="post">
+                        <p th:text="'Post: ' + ${userPost.time}"></p>
+                        <p th:text="${userPost.post}"></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="post-form">
+            <h3>Make a post:</h3>
+            <form action="/myprofile" method="POST">
+                <label for="userPost" id="post">What's on your mind?</label>
+                <input type="text" name="userPost" id="userPost">
+                <input type="submit" value="Submit Post">
+            </form>
+        </div>
+    </div>
 </main>
 </body>
 </html>
