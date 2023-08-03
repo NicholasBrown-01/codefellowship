@@ -21,3 +21,28 @@
 - The site should be well-styled and attractive.
 - The site should use templates to display its information.
 - Ensure that user registration also logs users into your app automatically.
+
+
+## Lab 17: CodeFellowship Posts with Login
+
+### Feature Tasks:
+
+- Added myprofile page
+- Added ability for user to see profile information
+- Added ability for user to make posts
+
+- Added User to view other User Profiles
+- Added constant Thymeleaf component
+- Added Default User Image to each user in Users page
+
+## Lab 18: CodeFellowship Posts with Login
+
+### Feature Tasks:
+
+- Added profile pages for each user
+- Streamlined User Index page
+- Added Follow capability
+- Added display on myProfile to see who you follow and who follows you
+- Added feed page that you can see the posts of users with follow with link to their profile page
+
+**Had to have help from GPT to understand tracking posting especially when integrating with the feed page
