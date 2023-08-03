@@ -1,0 +1,126 @@
+html {
+    background-image: url('https://images.unsplash.com/photo-1673825496210-d3b2eeb1f85b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1721&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    text-shadow: 2px 2px 4px #000;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+        flex-direction: column; /* Stack the elements vertically */
+        justify-content: center; /* Center the content horizontally */
+        align-items: center; /* Center the content vertically */
+}
+
+.container {
+    /* ... other styles ... */
+    display: flex;
+    flex-direction: column; /* Stack the elements vertically */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    width: 100%; /* Take up full width */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;  /* Change heading color to white */
+    text-shadow: 2px 2px 4px #000;  /* Add text shadow */
+}
+
+nav {
+flex: none;
+}
+
+.nav-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #000;  /* Change navigation link color to white */
+    background-color: #f2f2f2;
+    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    text-shadow: none;
+}
+
+.nav-link:hover {
+    color: #fff;  /* Change hover color to black */
+    background-color: #f00;
+    text-shadow: none;
+}
+/* Button Styles */
+button {
+    background-color: #f00; /* Red background */
+    color: #fff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #000; /* Black background on hover */
+    color: #fff; /* White text on hover */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"] {
+    margin-bottom: 2px;  /* Add space below each input field */
+}
+
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* viewport height - This will take the full height of the viewport */
+}
+
+.login-form {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;  /* Add round borders */
+    padding: 20px;  /* Add some padding */
+    width: 500px;  /* Set a larger width */
+    height: 500px;  /* Set a larger height */
+    display: flex;  /* Use flexbox */
+    flex-direction: column;  /* Stack the items vertically */
+    justify-content: center;  /* Center items horizontally */
+    align-items: center;  /* Center items vertically */
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-form {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0%;  /* No round borders */
+    padding: 20px;  /* Add some padding */
+    width: 600px;  /* Set a larger width */
+    height: auto;  /* Let the height expand to fit the content */
+    display: flex;  /* Use flexbox */
+    flex-direction: column;  /* Stack the items vertically */
+    justify-content: center;  /* Center items horizontally */
+    align-items: center;  /* Center items vertically */
+    overflow-y: auto;
+}
+
+
+

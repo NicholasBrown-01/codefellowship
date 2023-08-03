@@ -33,6 +33,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/signup").permitAll()
+                        .requestMatchers("/css/styles.css").permitAll()
                         .requestMatchers("/css/**").permitAll()
                         .anyRequest().authenticated()
                 )
