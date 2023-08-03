@@ -12,24 +12,43 @@
 
 <body>
 <main class="container">
-<nav>
-    <h3>
-        <a href="/users" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">View All Users</a>
-    </h3>
-    <h3>
-        <a href="/" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">Home</a>
-    </h3>
-</nav>
-    <h1>User Profile</h1>
-    <br>
+    <nav>
+        <h3>
+            <a href="/users" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">View All Users</a>
+        </h3>
+        <h3>
+            <a href="/feed" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">Your Feed</a>
+        </h3>
+        <h3>
+            <a href="/" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">Home</a>
+        </h3>
+    </nav>
+    <h1>Your Profile</h1>
 
     <img th:src="${applicationUser.imageURL}" alt="User image"
          style="width: 250px; height: 250px; object-fit: cover; border: 2px solid white;">
+    <br>
+    <br>
     <p>Username: <span th:text="${applicationUser.username}"></span></p>
     <p>First Name: <span th:text="${applicationUser.firstName}"></span></p>
     <p>Last Name: <span th:text="${applicationUser.lastName}"></span></p>
     <p>Date of Birth: <span th:text="${applicationUser.dateOfBirth}"></span></p>
     <p>Bio: <span th:text="${applicationUser.bio}"></span></p>
+
+    <h2>Users You Follow:</h2>
+    <ul>
+        <li th:each="user : ${applicationUser.usersIFollow}">
+            <p th:text="'Name: ' + ${user.firstName} + ' ' + ${user.lastName}"></p>
+        </li>
+    </ul>
+
+    <h2>Users Who Follow You:</h2>
+    <ul>
+        <li th:each="user : ${applicationUser.usersWhoFollowMe}">
+            <p th:text="'Name: ' + ${user.firstName} + ' ' + ${user.lastName}"></p>
+        </li>
+    </ul>
+
     <ul>
         <li th:each="userPost : ${applicationUser.postArray}">
             <div style="border: 2px solid white; padding: 10px;">
