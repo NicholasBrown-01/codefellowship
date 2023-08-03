@@ -35,7 +35,7 @@
 - Added constant Thymeleaf component
 - Added Default User Image to each user in Users page
 
-## Lab 18: CodeFellowship Posts with Login
+## Lab 18: Following Users
 
 ### Feature Tasks:
 
