@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>User Profile</title>
+</head>
+
+
+<h3 th:if="${username != null}" th:text="'Logged in as: ' + ${username}"></h3>
+
+
+<body>
+<main class="container">
+    <nav>
+        <h3>
+            <a href="/myprofile" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">Your Profile</a>
+        </h3>
+        <h3>
+            <a href="/users" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">View All Users</a>
+        </h3>
+        <h3>
+            <a href="/" style="display: inline-block; text-decoration: none; color: #333; background-color: #f2f2f2; padding: 10px; border: 2px solid #333; border-radius: 5px;">Home</a>
+        </h3>
+    </nav>
+
+    <h1 th:text="${user.firstName} + ' ' + ${user.lastName} + '\'s Profile'"></h1>
+    <br>
+
+    <img th:src="${user.imageURL}" alt="User image"
+         style="width: 250px; height: 250px; object-fit: cover; border: 2px solid white;">
+    <br>
+    <br>
+    <p>Username: <span th:text="${user.username}"></span></p>
+    <p>First Name: <span th:text="${user.firstName}"></span></p>
+    <p>Last Name: <span th:text="${user.lastName}"></span></p>
+    <p>Date of Birth: <span th:text="${user.dateOfBirth}"></span></p>
+    <p>Bio: <span th:text="${user.bio}"></span></p>
+
+    <form th:action="@{'/follow-user/' + ${user.id}}" method="POST">
+        <input type="hidden" name="_method" value="PUT"  />
+        <input type="submit" value="Follow Me" th:disabled="${currentUser.id.equals(user.id)}">
+    </form>
+
+    <ul>
+        <li th:each="userPost : ${user.postArray}">
+            <div style="border: 2px solid white; padding: 10px;">
+                <p th:text="${userPost.time}"></p>
+                <p th:text="'Post: ' + ${userPost.post}"></p>
+            </div>
+        </li>
+    </ul>
+
+</main>
+</body>
+
+</body>
+</html>

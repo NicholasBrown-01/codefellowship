@@ -11,12 +11,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -37,6 +41,23 @@ public class ApplicationUserController {
     @GetMapping("/login")
     public String getLoginPage() {
         return "login";
+    }
+
+    @GetMapping("/userProfile/{id}")
+    public String getUserProfilePage(@PathVariable Long id, Model model, Principal p) {
+        ApplicationUser user = applicationUserRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        String imageURL = "https://images.unsplash.com/photo-1599508704512-2f19efd1e35f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cXVlc3Rpb24lMjBtYXJrfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60";
+        user.setImageURL(imageURL);
+        model.addAttribute("user", user);
+
+        if (p != null) {
+            String username = p.getName();
+            ApplicationUser currentUser = applicationUserRepository.findByUsername(username);
+            model.addAttribute("username", username);
+            model.addAttribute("currentUser", currentUser);
+        }
+
+        return "userProfile";
     }
 
 
@@ -115,9 +136,45 @@ public class ApplicationUserController {
             applicationUser.setImageURL(imageURL);
 
             m.addAttribute("username", username);
+            m.addAttribute("currentUser", applicationUser);
         }
         return "users";
     }
+
+    @PutMapping("/follow-user/{id}")
+    public RedirectView followUser(Principal p, @PathVariable Long id) {
+        ApplicationUser userToFollow = applicationUserRepository.findById(id).orElseThrow(() -> new RuntimeException("Error reading this user from Database: " + id));
+
+        ApplicationUser currentUser = applicationUserRepository.findByUsername((p.getName()));
+
+        if(currentUser.getUsername().equals((userToFollow.getUsername()))) {
+            throw new IllegalArgumentException("Following yourself is not allowed");
+        }
+        currentUser.getUsersIFollow().add(userToFollow);
+        applicationUserRepository.save(currentUser);
+
+        return new RedirectView("/users");
+    }
+
+    @GetMapping("/feed")
+    public String getFeedPage(Model m, Principal p) {
+        if (p != null) {
+            String username = p.getName();
+            ApplicationUser currentUser = applicationUserRepository.findByUsername(username);
+            Set<ApplicationUser> following = currentUser.getUsersIFollow();
+
+            // get all posts from users the current user is following
+            List<ApplicationUserPost> feedPosts = new ArrayList<>();
+            for (ApplicationUser user : following) {
+                feedPosts.addAll(user.getPostArray());
+            }
+
+            m.addAttribute("username", username);
+            m.addAttribute("feedPosts", feedPosts);
+        }
+        return "feed";
+    }
+
 
 
     @GetMapping("/")

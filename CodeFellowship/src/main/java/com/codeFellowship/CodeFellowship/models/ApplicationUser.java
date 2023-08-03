@@ -6,7 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -20,6 +22,17 @@ public class ApplicationUser implements UserDetails {
     LocalDate dateOfBirth;
     String bio;
     String imageURL;
+
+    @ManyToMany
+    @JoinTable (
+            name = "followers_to_followees",  // table name
+            joinColumns = {@JoinColumn(name="UserWhoIsFollowing")},
+            inverseJoinColumns = {@JoinColumn(name="FollowedUser")}
+    )
+    Set<ApplicationUser> usersIFollow = new HashSet<>();
+
+    @ManyToMany (mappedBy = "usersIFollow")
+    Set<ApplicationUser> usersWhoFollowMe = new HashSet<>();
 
     @OneToMany(mappedBy = "applicationUser", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<ApplicationUserPost> postArray;
@@ -37,6 +50,21 @@ public class ApplicationUser implements UserDetails {
         this.bio = bio;
     }
 
+    public Set<ApplicationUser> getUsersIFollow() {
+        return usersIFollow;
+    }
+
+    public void setUsersIFollow(Set<ApplicationUser> usersIFollow) {
+        this.usersIFollow = usersIFollow;
+    }
+
+    public Set<ApplicationUser> getUsersWhoFollowMe() {
+        return usersWhoFollowMe;
+    }
+
+    public void setUsersWhoFollowMe(Set<ApplicationUser> usersWhoFollowMe) {
+        this.usersWhoFollowMe = usersWhoFollowMe;
+    }
 
     public Long getId() {
         return id;

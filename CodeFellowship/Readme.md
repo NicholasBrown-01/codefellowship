@@ -34,3 +34,15 @@
 - Added User to view other User Profiles
 - Added constant Thymeleaf component
 - Added Default User Image to each user in Users page
+
+## Lab 18: CodeFellowship Posts with Login
+
+### Feature Tasks:
+
+- Added profile pages for each user
+- Streamlined User Index page
+- Added Follow capability
+- Added display on myProfile to see who you follow and who follows you
+- Added feed page that you can see the posts of users with follow with link to their profile page
+
+**Had to have help from GPT to understand tracking posting especially when integrating with the feed page
